@@ -330,7 +330,7 @@ function ScenarioTabs({
           key={scenario.id}
           type="button"
           onClick={() => onChange(scenario.id)}
-          className={`rounded-full border px-4 py-2 text-sm font-semibold transition ${
+          className={`rounded-full border px-4 py-2 text-sm  transition ${
             activeId === scenario.id && !summaryActive
               ? "border-slate-900 bg-slate-900 text-white shadow-sm"
               : "border-slate-200 text-slate-600 hover:border-slate-300 hover:text-slate-900"
@@ -456,14 +456,14 @@ function SummaryTable({
             <p className="mt-1 text-xs uppercase tracking-wide text-slate-500">
               Estimated Annual Drag
             </p>
-            <p className="text-base font-semibold text-slate-900">
+            <p className="text-base text-slate-900">
               {formatFullDollars(entry.value * 12)}
             </p>
           </div>
         ))}
       </div>
       <div className="mt-4 max-h-[520px] overflow-auto rounded-2xl border border-slate-100">
-        <table className="min-w-full table-fixed divide-y divide-slate-100 text-sm">
+        <table className="min-w-full table-auto divide-y divide-slate-100 text-sm">
           <thead className="bg-slate-50 text-xs uppercase tracking-wide text-slate-600">
             <tr>
               <th className="px-3 py-2 text-left">Day</th>
@@ -483,7 +483,7 @@ function SummaryTable({
                 key={`summary-row-${row.day}`}
                 className="transition hover:bg-amber-50"
               >
-                <td className="cell-highlight px-3 py-2 font-semibold text-slate-900">
+                <td className="cell-highlight px-3 py-2  text-slate-900">
                   Day {row.day}
                 </td>
                 {scenarioOrder.map((id) => (
@@ -492,7 +492,7 @@ function SummaryTable({
                     className="cell-highlight px-3 py-2"
                   >
                     <span
-                      className="tooltip-wrapper text-[13px] font-semibold text-slate-900"
+                      className="tooltip-wrapper text-[13px]  text-slate-900"
                       data-tooltip={
                         row.cumulative[id] === 0
                           ? "No drag"
@@ -534,8 +534,8 @@ function ResultsTable({
       : ["Cash", "Activity", "Int Earn", "Int Recv"];
 
   return (
-    <div className="rounded-2xl border border-slate-100">
-      <table className="min-w-full table-fixed divide-y divide-slate-100 text-sm leading-snug">
+    <div className="rounded-2xl border border-slate-100 overflow-x-auto">
+      <table className="results-table min-w-full table-auto divide-y divide-slate-100 text-sm leading-snug">
         <thead className="text-xs uppercase tracking-wide text-slate-600">
           <tr>
             <th rowSpan={2} className="bg-slate-50 px-2 py-2 text-center">
@@ -601,7 +601,7 @@ function ResultsTable({
         <tbody className="divide-y divide-slate-100 bg-white">
           {records.map((record) => (
             <tr key={record.day} className="transition hover:bg-amber-50">
-              <td className="cell-highlight px-2 py-2 text-center font-semibold text-slate-900">
+              <td className="cell-highlight px-2 py-2 text-center text-slate-900">
                 <span
                   className="tooltip-wrapper"
                   data-tooltip={`Day ${record.day}`}
@@ -612,7 +612,7 @@ function ResultsTable({
               {viewMode === "cash" ? (
                 <>
                   <td
-                    className={`cell-highlight px-2 py-2 text-center font-semibold text-slate-900 ${cashPoolCellClass}`}
+                    className={`cell-highlight px-2 py-2 text-center text-slate-900 ${cashPoolCellClass}`}
                   >
                     <span
                       className="tooltip-wrapper"
@@ -622,7 +622,7 @@ function ResultsTable({
                     </span>
                   </td>
                   <td
-                    className={`cell-highlight px-2 py-2 text-center font-semibold text-slate-800 ${cashPoolCellClass}`}
+                    className={`cell-highlight px-2 py-2 text-center text-slate-800 ${cashPoolCellClass}`}
                   >
                     <span
                       className="tooltip-wrapper"
@@ -638,7 +638,7 @@ function ResultsTable({
                     </span>
                   </td>
                   <td
-                    className={`cell-highlight px-2 py-2 text-center font-semibold text-slate-800 ${cashPoolCellClass}`}
+                    className={`cell-highlight px-2 py-2 text-center text-slate-800 ${cashPoolCellClass}`}
                   >
                     <span
                       className="tooltip-wrapper"
@@ -650,7 +650,7 @@ function ResultsTable({
                     </span>
                   </td>
                   <td
-                    className={`cell-highlight px-2 py-2 text-center font-semibold text-slate-800 ${cashPoolCellClass}`}
+                    className={`cell-highlight px-2 py-2 text-center text-slate-800 ${cashPoolCellClass}`}
                   >
                     <span
                       className="tooltip-wrapper"
@@ -665,7 +665,7 @@ function ResultsTable({
               ) : (
                 <>
                   <td
-                    className={`cell-highlight px-2 py-2 text-center font-semibold text-slate-800 ${cashPoolCellClass}`}
+                    className={`cell-highlight px-2 py-2 text-center text-slate-800 ${cashPoolCellClass}`}
                   >
                     <span
                       className="tooltip-wrapper"
@@ -681,7 +681,7 @@ function ResultsTable({
                     </span>
                   </td>
                   <td
-                    className={`cell-highlight px-2 py-2 text-center font-semibold text-slate-800 ${cashPoolCellClass}`}
+                    className={`cell-highlight px-2 py-2 text-center text-slate-800 ${cashPoolCellClass}`}
                   >
                     <span
                       className="tooltip-wrapper"
@@ -697,7 +697,7 @@ function ResultsTable({
                     </span>
                   </td>
                   <td
-                    className={`cell-highlight px-2 py-2 text-center font-semibold text-slate-800 ${cashPoolCellClass}`}
+                    className={`cell-highlight px-2 py-2 text-center text-slate-800 ${cashPoolCellClass}`}
                   >
                     <span
                       className="tooltip-wrapper"
@@ -730,7 +730,7 @@ function ResultsTable({
                     {viewMode === "cash" ? (
                       <>
                         <td
-                          className="cell-highlight px-2 py-2 text-center font-medium"
+                          className="cell-highlight px-2 py-2 text-center"
                           style={{ color: pool.color }}
                         >
                           <span
@@ -741,7 +741,7 @@ function ResultsTable({
                           </span>
                         </td>
                         <td
-                          className="cell-highlight px-2 py-2 text-center font-semibold"
+                          className="cell-highlight px-2 py-2 text-center"
                           style={{ color: pool.color }}
                         >
                           <span
@@ -769,7 +769,7 @@ function ResultsTable({
                           </span>
                         </td>
                         <td
-                          className="cell-highlight px-2 py-2 text-center font-semibold"
+                          className="cell-highlight px-2 py-2 text-center"
                           style={{ color: pool.color }}
                         >
                           <span
@@ -782,7 +782,7 @@ function ResultsTable({
                           </span>
                         </td>
                         <td
-                          className="cell-highlight px-2 py-2 text-center font-semibold"
+                          className="cell-highlight px-2 py-2 text-center"
                           style={{ color: pool.color }}
                         >
                           <span
@@ -802,7 +802,7 @@ function ResultsTable({
                     ) : (
                       <>
                         <td
-                          className="cell-highlight px-2 py-2 text-center font-semibold"
+                          className="cell-highlight px-2 py-2 text-center"
                           style={{ color: pool.color }}
                         >
                           <span
@@ -819,7 +819,7 @@ function ResultsTable({
                           </span>
                         </td>
                         <td
-                          className="cell-highlight px-2 py-2 text-center font-semibold"
+                          className="cell-highlight px-2 py-2 text-center "
                           style={{ color: pool.color }}
                         >
                           <span
@@ -836,7 +836,7 @@ function ResultsTable({
                           </span>
                         </td>
                         <td
-                          className="cell-highlight px-2 py-2 text-center font-semibold"
+                          className="cell-highlight px-2 py-2 text-center "
                           style={{ color: pool.color }}
                         >
                           <span

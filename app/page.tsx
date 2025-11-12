@@ -114,8 +114,8 @@ const DEFAULT_PARAMS: SimulationParams = {
   pcCash: 0,
   preCash: 0,
   cashPool: 50,
-  borrowRate: 4.25,
-  idleRate: 4.25,
+  borrowRate: 4.0,
+  idleRate: 4.0,
   days: 30,
 };
 
@@ -144,21 +144,21 @@ const SCENARIOS: {
     id: "prefunded",
     name: "Pre-Funded Pools",
     description:
-      "Each investment pool begins with $30M cash which is used to fund commitments as they come in. Cash is assumed to earn 4.25% when idle.",
+      "Each investment pool begins with $30M cash which is used to fund commitments as they come in. Cash is assumed to earn 4.0% when idle.",
     params: PREFUNDED_PARAMS,
   },
   {
     id: "internal",
     name: "Internal Cash Pool",
     description:
-      "Internally funded borrowing facility allows individual pools to hold zero starting cash and draw needed funds from a centralized pool to meet funding needs. Idle cash earns 4.25%. Pools borrow at 4.25%.",
+      "Internally funded borrowing facility allows individual pools to hold zero starting cash and draw needed funds from a centralized pool to meet funding needs. Idle cash earns 4.0%. Pools borrow at 4.0%.",
     params: DEFAULT_PARAMS,
   },
   {
     id: "loc",
     name: "External LOC",
     description:
-      "Pools tap an external bank line; draws cost cash rate (4.25%) + 40 bps and no idle cash is reserved.",
+      "Pools tap an external bank line; draws cost cash rate (4.0%) + 40 bps and no idle cash is reserved.",
     params: LOC_PARAMS,
   },
 ];
@@ -210,7 +210,7 @@ export default function Home() {
                 <h1 className="text-3xl font-semibold text-slate-900">
                   {showSummary
                     ? "Scenario Comparison Summary"
-                    : `${activeScenarioMeta.name}: liquidity, interest, and borrowing over ${activeScenarioMeta.params.days} days`}
+                    : `${activeScenarioMeta.name}`}
                 </h1>
                 <p className="text-sm text-slate-600">
                   {showSummary
